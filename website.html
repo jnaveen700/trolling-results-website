@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Trolling Website</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #e0eafc, #cfdef3);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #4a00e0;
+            background-image: linear-gradient(to right, #4a00e0, #8e2de2);
+            color: #fff;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.2rem;
+        }
+        form {
+            margin: 2rem auto;
+            max-width: 400px;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: calc(100% - 20px);
+            padding: 0.75rem;
+            margin: 0.5rem auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        input:focus, button:focus {
+            outline: none;
+            border-color: #6200ea;
+            box-shadow: 0 0 5px rgba(98, 0, 234, 0.5);
+        }
+        button {
+            background: linear-gradient(to right, #6200ea, #8e2de2);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+        }
+        .result {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            color: #4a00e0;
+            font-weight: bold;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>"Official Results" Portal</h1>
+        <p>Enter your details to see your results!</p>
+    </header>
+
+    <form id="results-form">
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <input type="text" id="roll" placeholder="Enter your roll number" required>
+        <button type="submit">Get Results</button>
+    </form>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        document.getElementById('results-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const roll = document.getElementById('roll').value;
+            const resultDiv = document.getElementById('result');
+
+            // Trolling results logic
+            const messages = [
+                `Congratulations ${name}! Your roll number ${roll} has been selected for Mars colonization training!`,
+                `Oops! ${name}, your results have been "lost in the multiverse." Please try again after 1,000 years!`,
+                `Error 404: Results for roll number ${roll} not found. Please contact the Intergalactic Results Board!`,
+                `Wow, ${name}! You scored over 9000! Wait... is that even possible?`
+            ];
+
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+            resultDiv.textContent = randomMessage;
+        });
+    </script>
+</body>
+</html>
